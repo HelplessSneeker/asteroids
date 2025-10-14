@@ -30,7 +30,7 @@ def main():
     asteroidField = AsteroidField()
 
     running = True
-    while True:
+    while running:
         screen.fill("black")
         dt = clock.tick(60) / 1000
         for entity in updatable:
@@ -38,9 +38,12 @@ def main():
         for entity in drawable:
             entity.draw(screen)
         pygame.display.flip()
+        for asteroid in asteroids:
+            if asteroid.collides_with(player):
+                running = False
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                return
+                running = False
 
 
 if __name__ == "__main__":
