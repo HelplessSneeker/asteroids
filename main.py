@@ -4,6 +4,7 @@ from constants import *
 from player import Player
 from asteroid import Asteroid
 from AsteroidField import AsteroidField
+from shot import Shot
 
 
 def main():
@@ -21,10 +22,12 @@ def main():
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
+    shots = pygame.sprite.Group()
 
     Player.containers = (updatable, drawable)
     Asteroid.containers = (updatable, drawable, asteroids)
     AsteroidField.containers = updatable
+    Shot.containers = (updatable, drawable, shots)
 
     player = Player(int(SCREEN_WIDTH / 2), int(SCREEN_HEIGHT / 2))
     asteroidField = AsteroidField()
@@ -38,9 +41,16 @@ def main():
         for entity in drawable:
             entity.draw(screen)
         pygame.display.flip()
+
         for asteroid in asteroids:
             if asteroid.collides_with(player):
+                print("Game Over!")
                 running = False
+            for shot in shots:
+                if shot.collides_with(asteroid):
+                    asteroid.split()
+                    shot.kill()
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
