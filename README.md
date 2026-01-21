@@ -1,11 +1,9 @@
 
 
-<h3 align="center">Static Site Generator</h3>
+<h3 align="center">Asteroids</h3>
 
   <p align="center">
     The classic Asteroids Game Progrmed using python
-    <br />
-    <a href="https://helplesssneeker.github.io/static_site/">View generated site</a>
   </p>
 </div>
 
