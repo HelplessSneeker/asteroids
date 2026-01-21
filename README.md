@@ -3,7 +3,7 @@
 <h3 align="center">Asteroids</h3>
 
   <p align="center">
-    The classic Asteroids Game Progrmed using python
+    The classic Asteroids Game Programmed using python
   </p>
 </div>
 
